@@ -85,14 +85,14 @@ class DevPagesController extends Controller
 
         $file = $request->file('photo');
         if($file != null){
-            $path = 'img/companyPic/';
+            $path = '/img/companyPic/';
             $file->move($path,$file->getClientOriginalName());
 
             $path = $path.$file->getClientOriginalName();
             $dev->company_pic_url = $path;
         }
         else{
-            $dev->company_pic_url = 'img/defaultpic.png';
+            $dev->company_pic_url = '/img/defaultpic.png';
         }
         $dev->save();
 
@@ -132,7 +132,7 @@ class DevPagesController extends Controller
 			'photo' => 'required',
 		]);
         $file = $request->file('photo');
-        $path = 'img/companyPic/';
+        $path = '/img/companyPic/';
         $file->move($path,$file->getClientOriginalName());
 
         $path = $path.$file->getClientOriginalName();
