@@ -22,20 +22,12 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                    <?php
-                                    $str = 'https://';
-                                    $is_url = substr($promotional->img[0], 0, strlen($str)) === $str;
-                                    ?>
-                                    <img src="{{ $is_url ? '' : '/' }}{{ $promotional->img[0] }}" id="current"
+                                    <img src="{{ $promotional->img[0] }}" id="current"
                                         alt="#" data-id='0'>
                                 </div>
                                 <div class="images">
                                     @for ($i = 1; $i < count($promotional->img); $i++)
-                                        <?php
-                                        $str = 'https://';
-                                        $is_url = substr($promotional->img[$i], 0, strlen($str)) === $str;
-                                        ?>
-                                        <img class="images-list" src="{{ $is_url ? '' : '/' }}{{ $promotional->img[$i] }}"
+                                        <img class="images-list" src="{{ $promotional->img[$i] }}"
                                             alt="#" data-id='{{ $i }}'>
                                     @endfor
                                 </div>
@@ -46,11 +38,7 @@
                         <div class="product-info">
                             <div class="d-flex align-items-center">
                                 <div style="margin-right:20px">
-                                    <?php
-                                    $str = 'https://';
-                                    $is_url = substr($promotional->logo, 0, strlen($str)) === $str;
-                                    ?>
-                                    <img src="{{$is_url ? '' : '/'}}{{ $promotional->logo }}" alt=""
+                                    <img src="{{ $promotional->logo }}" alt=""
                                         style="height: 100px; width:100px;border-radius:10px">
                                 </div>
                                 <div>
@@ -82,7 +70,7 @@
                                             style="width: 20px"></em>
                                     @endfor
                                 </span>
-                                <span class="text-secondary"> ({{ $reviews->avg('rating') }}/5), @lang('gameDetail.reviewed')
+                                <span class="text-secondary"> ({{ $reviews->avg('rating') ? $reviews->avg('rating'): '0' }}/5), @lang('gameDetail.reviewed')
                                     {{ $reviews->count() }} @lang('gameDetail.users')</span>
                                 <br>
                                 @lang('gameDetail.content_rating') {{ $game->content_rating }}

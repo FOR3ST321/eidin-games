@@ -101,7 +101,7 @@
                                 </h3>
                                 <div class="col-lg-12 col-md-12 col-12 d-flex">
                                     <div class="button me-4">
-                                        <button class="btn" style="width: 100%;">@lang('gameDetail.download')</button>
+                                        <a class="btn" href="/downloadGame/{{$game->game_data_path}}" style="padding-top:10px">@lang('gameDetail.download')</a>
                                     </div>
                                     <div class="button me-4">
                                         <form action="/admin/detail/publish" method="post">
