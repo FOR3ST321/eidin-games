@@ -111,8 +111,16 @@ class GameController extends Controller
             'os' => 'required|max:128',
             'memory' => 'required|max:128',
             'graphic' => 'required|max:128',
-            'storage' => 'required|max:128'
+            'storage' => 'required|max:128',
         ]);
+
+        $game_data_path = $game->game_data_path;
+        if(!$request->input('game_data')){
+            $file = $request->file('game_data');
+            $game_data_path = 'data/game_data/';
+            $file->move($game_data_path,$file->getClientOriginalName());
+            $game_data_path = '/'.$game_data_path.$file->getClientOriginalName();
+        }
 
         Game::where('id', $request->id)->update([
             'game_name' => $request->game_name,
@@ -126,6 +134,7 @@ class GameController extends Controller
             'requirement_memory' => $request->memory,
             'requirement_graphic' => $request->graphic,
             'requirement_storage' => $request->storage,
+            'game_data_path' => $game_data_path,
             'status' => ($game->status == 'denied') ? 'pending' : $game->status
         ]);
 

@@ -90,6 +90,22 @@
                     @enderror
                 </div>
 
+                <h5 style="margin-top:40px">@lang('uploadGame.part3')
+                    <hr>
+                </h5>
+
+                <p>@lang('uploadGame.part3_desc')</p>
+
+                <div class="custom-file mb-3" style="margin-top:20px">
+                    <label for="exampleInputText" class="form-label">@lang('uploadGame.game_data')*</label>
+                    <input id="profileChange" type="file" name='game_data'
+                        class="custom-file-input form-control @error('game_data') is-invalid @enderror" id="customFile"
+                        accept=".zip, .rar">
+                    @error('game_data')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <h5 style="margin-top:40px">@lang('uploadGame.part4')
                     <hr>
                 </h5>
