@@ -72,14 +72,6 @@ class Game extends Model
 
     public static function getGamebyTag($tag)
     {
-        // return DB::table('games')
-        //     ->join('tag_details', 'tag_details.game_id', '=', 'games.id')
-        //     ->join('game_tags', 'game_tags.id', '=', 'tag_details.tag_id')
-        //     ->join('game_genres', 'game_genres.id', '=', 'games.genre_id')
-        //     ->where('tag_name', '=', $tag)
-        //     ->where('status','published') //cuma tampilin yang di publish doang
-        //     ->get();
-
         global $queryTag;
         $queryTag = $tag;
         return Game::with(['gameGenre', 'gameReviews'])->whereHas('tagDetail', function($query){
@@ -87,7 +79,7 @@ class Game extends Model
                 global $queryTag;
                 $query->where('tag_name', $queryTag);
             });
-        })->get();
+        })->where('status', 'published')->get();
     }
 
     public static function getGamebyTagID($tag)
@@ -97,7 +89,7 @@ class Game extends Model
         return Game::with(['gameGenre', 'gameReviews'])->whereHas('tagDetail', function($query){
             global $queryTag;
             $query->where('tag_id', $queryTag);
-        })->get();
+        })->where('status', 'published')->get();
     }
 
     public static function getGamebySearch($query)
