@@ -115,7 +115,7 @@ class GameController extends Controller
         ]);
 
         $game_data_path = $game->game_data_path;
-        if(!$request->input('game_data')){
+        if($request->input('game_data') != null){
             $file = $request->file('game_data');
             $game_data_path = 'data/game_data/';
             $file->move($game_data_path,$file->getClientOriginalName());

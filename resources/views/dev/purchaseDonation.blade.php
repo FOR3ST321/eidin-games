@@ -51,7 +51,7 @@
                             <img src="{{ $user->profile_url }}" alt="" class="rounded-circle"
                                 style="height: 50px; width:50px">
                             <div class="d-flex flex-column">
-                                <strong class="text-light" style="margin-left:15px;font-size:18px">{{ $user->username }}</strong>
+                                <strong class="text-light" style="margin-left:15px;font-size:18px">{{ $user->name }}</strong>
                                 <strong class="text-light" style="margin-left:15px;font-size:18px">Bought: {{$payment->game->game_name}}</strong>
                                 <strong style="margin-left:15px;font-size:20px">Rp{{ number_format($payment->amount, 2, ',', '.') }} ({{ str_replace('_', ' ',$payment->payment_method) }})</strong>
                             </div>

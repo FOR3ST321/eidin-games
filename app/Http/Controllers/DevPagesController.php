@@ -132,10 +132,10 @@ class DevPagesController extends Controller
 			'photo' => 'required',
 		]);
         $file = $request->file('photo');
-        $path = '/img/companyPic/';
+        $path = 'img/companyPic/';
         $file->move($path,$file->getClientOriginalName());
 
-        $path = $path.$file->getClientOriginalName();
+        $path = '/'.$path.$file->getClientOriginalName();
         //update
         Developer::where('user_id', Auth::user()->id)->update([
             'company_pic_url' => $path

@@ -21,7 +21,7 @@ class GameReviewController extends Controller
             'game_id' => $game_id,
             'user_id' => Auth::user()->id,
             'rating' => $request['rating'],
-            'comment' => $request['comment']
+            'comment' => $request['comment'] != null ? $request['comment'] : ''
         ]);
 
         Alert::success('Review Posted!', 'Thank you for your review!');
